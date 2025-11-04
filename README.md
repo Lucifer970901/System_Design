@@ -11,7 +11,7 @@ All core knowledge is organized into dedicated Markdown files for easy learning 
 | Folder | Content Type | Description |
 | :--- | :--- | :--- |
 | **`Concepts/`** | Theory & Fundamentals (.md files) | Contains individual Markdown files, one for each major system design concept, pattern, and component. |
-| `Case_Studies/` (Optional) | Practical Examples (.md files) | Contains examples of the real-world systems (e.g., Design Usecase of Instagram, Tinder ). |
+| `Case_Studies/` | Practical Examples (.md files) | Contains examples of the real-world systems (e.g., Design Usecase of Instagram, Tinder ). |
 
 ---
 
