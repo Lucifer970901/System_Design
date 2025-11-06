@@ -93,6 +93,7 @@ The term "monolith" means a single, large block of stone, which perfectly descri
 * **Database**: Typically uses a single, shared database for all functions.
 * **Scaling**: Uses Vertical Scaling (scaling up) by upgrading the single server's resources (CPU, RAM).
 
+
 **Pros of Monolithic Architecture (simple to start)**
 
 * Simple Development and easy deployment
@@ -130,12 +131,14 @@ Think of it as transforming a single, massive, interdependent machine into a fle
 * **Technology Heterogeneity**:	Teams have the freedom to choose the best technology stack (language, framework, database) for a specific service's needs, rather than being restricted to one technology across the entire application.
 * **Design for Failure (Resilience)**:	If one service fails, the overall application can remain functional (possibly with degraded capability), as the failure is isolated and does not crash the entire system.
 
+
 **Major Benefits**
 
 * **Faster Development and Agility**: Small, autonomous teams can focus on their service and deploy updates quickly, enabling Continuous Integration/Continuous Delivery (CI/CD).
 * **Scalability**: You can apply horizontal scaling to only the high-demand services (e.g., scale the "Search" service without scaling the "Billing" service), which is more efficient and cost-effective.
 * **Flexibility and Innovation**: Teams can use the best tool for the job and adopt new technologies for a specific service without affecting the rest of the system.
-* ***Resilience and Isolation**: Failure in one service is contained, preventing cascading failures across the entire application.
+* **Resilience and Isolation**: Failure in one service is contained, preventing cascading failures across the entire application.
+
 
 **Microservices vs. Monolithic Architecture**
 
@@ -161,15 +164,16 @@ To the end-user, the system often appears as a single, powerful entity, even tho
 
 Distributed systems are defined by the architectural goals they aim to achieve, primarily by using horizontal scaling:
 
-*    * **Scalability**: The ability to handle growing demands (more users, more data) by simply adding more nodes (Horizontal Scaling), rather than upgrading a single machine.
+* **Scalability**: The ability to handle growing demands (more users, more data) by simply adding more nodes (Horizontal Scaling), rather than upgrading a single machine.
 
-    * **Fault Tolerance/Resilience**: The system can continue to operate even if one or more individual nodes fail. This eliminates the single point of failure found in monolithic (single-server) systems.
+* **Fault Tolerance/Resilience**: The system can continue to operate even if one or more individual nodes fail. This eliminates the single point of failure found in monolithic (single-server) systems.
 
-    * **Concurrency**: Multiple nodes can process the same or different tasks simultaneously, significantly increasing throughput and performance.
+* **Concurrency**: Multiple nodes can process the same or different tasks simultaneously, significantly increasing throughput and performance.
 
-    * **Availability**: Services remain accessible to users for a high percentage of the time, achieved through redundancy (having multiple copies of data/services).
+* **Availability**: Services remain accessible to users for a high percentage of the time, achieved through redundancy (having multiple copies of data/services).
 
-    * **Transparency**: The complexity of the underlying network, node communication, and coordination is hidden from the end-user and often from the application developer.
+* **Transparency**: The complexity of the underlying network, node communication, and coordination is hidden from the end-user and often from the application developer.
+
 
 **Comparison with Centralized Systems**
 
@@ -188,6 +192,7 @@ it is the process of dividing a large dataset or table into smaller, more manage
 
 This technique is fundamental to achieving scalability, performance, and manageability for systems dealing with large volumes of data (Big Data) or high traffic (Distributed Systems).
 
+
 **Why Partitioning is Essential**
 
 | Goal | Benefit Achieved | 
@@ -196,6 +201,7 @@ This technique is fundamental to achieving scalability, performance, and managea
 | Performance | Reduces the amount of data that must be scanned for any given query, leading to faster query response times (Partition Pruning). | 
 | Manageability | Simplifies maintenance tasks like backups, archiving, and indexing, which can be performed on individual partitions instead of the massive original table. | 
 | Fault Isolation | If one partition or the server hosting it fails, the rest of the data (on other partitions/servers) remains available. | 
+
 
 **Main Partitioning Strategies**
 
@@ -213,6 +219,7 @@ There are two primary ways to divide a large table, each serving a different pur
 
     * **Goal**: To optimize read/write performance by separating frequently accessed columns from rarely accessed ones, reducing I/O and cache requirements.
 
+
 **Partitioning vs. Sharding**
 
 The terms are often used interchangeably, but in system design, the distinction is subtle:
@@ -229,26 +236,28 @@ A load balancer is a device or software program that acts as a "traffic cop" for
 
 It's essential for achieving horizontal scaling and high availability in distributed systems.
 
+
 **How It Works and Why It's Needed**
 
 Imagine you have a popular website with thousands of visitors per second:
 
-*    * **Incoming Request**: A user's web request (e.g., loading a page) first hits the load balancer.
+* **Incoming Request**: A user's web request (e.g., loading a page) first hits the load balancer.
 
-    * **Traffic Direction**: The load balancer uses a specific algorithm (like Round Robin or Least Connections) to decide which server in the pool is the best choice for handling that request right now.
+* **Traffic Direction**: The load balancer uses a specific algorithm (like Round Robin or Least Connections) to decide which server in the pool is the best choice for handling that request right now.
 
-    * **Health Check**: Before sending the traffic, the load balancer constantly performs health checks to ensure all backend servers are **alive and responding**. If a server fails, the load balancer automatically stops sending traffic to it.
+* **Health Check**: Before sending the traffic, the load balancer constantly performs health checks to ensure all backend servers are **alive and responding**. If a server fails, the load balancer automatically stops sending traffic to it.
 
 
 **Load Balancing Algorithms**
 Load balancers use various methods to decide where to send traffic.
 
-*    * **Round Robin**: Sends ***requests to servers sequentially***, in order (Server 1, then Server 2, then Server 3, then back to Server 1, etc.). Simple and fair.
+* **Round Robin**: Sends ***requests to servers sequentially***, in order (Server 1, then Server 2, then Server 3, then back to Server 1, etc.). Simple and fair.
 
-    * **Least Connections**: Sends the ***request to the server that currently has the fewest active connections***. This is better when servers handle different workloads or tasks.
+* **Least Connections**: Sends the ***request to the server that currently has the fewest active connections***. This is better when servers handle different workloads or tasks.
 
-    * **IP Hash**: Uses a hash function based on the client's IP address. This ensures a ***specific client is always directed to the same server***, which is useful for "***sticky***" sessions (where state is stored on the server).
+* **IP Hash**: Uses a hash function based on the client's IP address. This ensures a ***specific client is always directed to the same server***, which is useful for "***sticky***" sessions (where state is stored on the server).
     
+
 **Load Balancer Types**
 
 *    * **L4 (Layer 4) Load Balancer**: Works at the Transport Layer (TCP/UDP). It makes decisions based primarily on IP addresses and ports. 
@@ -263,19 +272,15 @@ Decoupling (or loose coupling) is a fundamental concept in system design that me
 
 Think of it as having specialized teams at a company: the Marketing team knows they need a product from the Engineering team, but they don't need to know how Engineering builds it, what tools they use, or when they take coffee breaks. They just interact through a well-defined interface (like a Product Spec).
 
-🤝 Decoupling the System Explained Simply
-Decoupling (or loose coupling) is a fundamental concept in system design that means making sure the different parts, services, or components of an application know as little as possible about each other.
-
-Think of it as having specialized teams at a company: the Marketing team knows they need a product from the Engineering team, but they don't need to know how Engineering builds it, what tools they use, or when they take coffee breaks. They just interact through a well-defined interface (like a Product Spec).
-
 **The Core Idea: Independence**
 When a system is decoupled, it means:
 
-*    * **Change Isolation**: If you change something in Component A, Component B doesn't automatically break. The change is isolated to one area.
+* **Change Isolation**: If you change something in Component A, Component B doesn't automatically break. The change is isolated to one area.
 
-    * **Independent Development**: Teams can develop, update, and deploy their components without having to coordinate or stop the work of other teams.
+* **Independent Development**: Teams can develop, update, and deploy their components without having to coordinate or stop the work of other teams.
 
-    * **Flexibility**: You can replace an old component with a new one entirely (e.g., swapping out one database for another) with minimal impact on the rest of the system.
+* **Flexibility**: You can replace an old component with a new one entirely (e.g., swapping out one database for another) with minimal impact on the rest of the system.
+
 
 **To achieve Decoupling**
 
