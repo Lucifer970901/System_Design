@@ -17,7 +17,7 @@ Think of it as making one machine more powerful.
 
 Example: Upgrading a virtual machine (VM) instance from a small size with 2 vCPUs and 8GB of RAM to a larger size with 8 vCPUs and 32GB of RAM.
 
-**When to Use**:
+### **When to Use**:
 
 * For applications not designed for distributed systems (like some monolithic or legacy applications).
 * When the workload is predictable and fits within the physical limits of a single machine.
@@ -31,14 +31,14 @@ Horizontal scaling, also known as "scaling out" (or "scaling in"), is a method o
 
 Instead of making one machine more powerful, you add new machines to distribute the workload among them.
 
-**Key Characteristics**:
+### **Key Characteristics**:
 
 * **Action**: You increase the number of machines.
 * **Resources Added**: New, typically commodity, servers or instances are added to a cluster.
 * **Work Distribution**: A load balancer is essential to distribute incoming requests evenly across all the available servers.
 * **Analogy**: If vertical scaling is like replacing one delivery truck with a bigger, faster one, horizontal scaling is like adding more standard-sized trucks to your fleet.
 
-**When to Use**:
+### **When to Use**:
 
 * For high-availability and fault tolerance (if one server fails, others take over).
 * For applications with unpredictable or rapidly growing workloads (e.g., e-commerce during a major sale).
@@ -87,21 +87,21 @@ Monolithic architecture is the traditional and simplest way to build an applicat
 
 The term "monolith" means a single, large block of stone, which perfectly describes this architecture: it's one large, solid application.
 
-**Key Characteristics**
+### **Key Characteristics**
 * **Structure**: Everything is in one code repository and deployed as one executable file.
 * **Coupling**: Tightly coupled—a change in one small part can affect the entire system.
 * **Database**: Typically uses a single, shared database for all functions.
 * **Scaling**: Uses Vertical Scaling (scaling up) by upgrading the single server's resources (CPU, RAM).
 
 
-**Pros of Monolithic Architecture (simple to start)**
+### **Pros of Monolithic Architecture (simple to start)**
 
 * Simple Development and easy deployment
 * Simplified Debugging
 * Lower Initial Cost
 * Faster Initial Speed
 
-**Cons of Monolithic Architecture (Hard to Grow)**
+### **Cons of Monolithic Architecture (Hard to Grow)**
 
 * Scaling Inefficiency
 * Technology Lock-in
@@ -109,7 +109,7 @@ The term "monolith" means a single, large block of stone, which perfectly descri
 * Low Fault Isolation
 * Code Complexity
 
-**When to Choose a Monolith**
+### **When to Choose a Monolith**
 
 The monolithic architecture is often the best choice for:
 
@@ -132,7 +132,7 @@ Think of it as transforming a single, massive, interdependent machine into a fle
 * **Design for Failure (Resilience)**:	If one service fails, the overall application can remain functional (possibly with degraded capability), as the failure is isolated and does not crash the entire system.
 
 
-**Major Benefits**
+### **Major Benefits**
 
 * **Faster Development and Agility**: Small, autonomous teams can focus on their service and deploy updates quickly, enabling Continuous Integration/Continuous Delivery (CI/CD).
 * **Scalability**: You can apply horizontal scaling to only the high-demand services (e.g., scale the "Search" service without scaling the "Billing" service), which is more efficient and cost-effective.
@@ -140,7 +140,7 @@ Think of it as transforming a single, massive, interdependent machine into a fle
 * **Resilience and Isolation**: Failure in one service is contained, preventing cascading failures across the entire application.
 
 
-**Microservices vs. Monolithic Architecture**
+### **Microservices vs. Monolithic Architecture**
 
 The microservice architecture is typically adopted as an evolution away from the traditional monolithic architecture.
 
@@ -160,7 +160,7 @@ A distributed system is a collection of independent computers (nodes) that commu
 
 To the end-user, the system often appears as a single, powerful entity, even though the work is being processed simultaneously across multiple machines.
 
-**Key Characteristics**
+### **Key Characteristics**
 
 Distributed systems are defined by the architectural goals they aim to achieve, primarily by using horizontal scaling:
 
@@ -175,7 +175,7 @@ Distributed systems are defined by the architectural goals they aim to achieve, 
 * **Transparency**: The complexity of the underlying network, node communication, and coordination is hidden from the end-user and often from the application developer.
 
 
-**Comparison with Centralized Systems**
+### **Comparison with Centralized Systems**
 
 | Feature | Distributed System | Centralized (Monolithic) System | 
 | :--- | :--- | :--- |
@@ -193,7 +193,7 @@ it is the process of dividing a large dataset or table into smaller, more manage
 This technique is fundamental to achieving scalability, performance, and manageability for systems dealing with large volumes of data (Big Data) or high traffic (Distributed Systems).
 
 
-**Why Partitioning is Essential**
+### **Why Partitioning is Essential**
 
 | Goal | Benefit Achieved | 
 | :--- | :--- |
@@ -203,7 +203,7 @@ This technique is fundamental to achieving scalability, performance, and managea
 | Fault Isolation | If one partition or the server hosting it fails, the rest of the data (on other partitions/servers) remains available. | 
 
 
-**Main Partitioning Strategies**
+### **Main Partitioning Strategies**
 
 There are two primary ways to divide a large table, each serving a different purpose:
 
@@ -220,7 +220,7 @@ There are two primary ways to divide a large table, each serving a different pur
     * **Goal**: To optimize read/write performance by separating frequently accessed columns from rarely accessed ones, reducing I/O and cache requirements.
 
 
-**Partitioning vs. Sharding**
+### **Partitioning vs. Sharding**
 
 The terms are often used interchangeably, but in system design, the distinction is subtle:
 
@@ -237,7 +237,7 @@ A load balancer is a device or software program that acts as a "traffic cop" for
 It's essential for achieving horizontal scaling and high availability in distributed systems.
 
 
-**How It Works and Why It's Needed**
+### **How It Works and Why It's Needed**
 
 Imagine you have a popular website with thousands of visitors per second:
 
@@ -248,7 +248,7 @@ Imagine you have a popular website with thousands of visitors per second:
 * **Health Check**: Before sending the traffic, the load balancer constantly performs health checks to ensure all backend servers are **alive and responding**. If a server fails, the load balancer automatically stops sending traffic to it.
 
 
-**Load Balancing Algorithms**
+### **Load Balancing Algorithms**
 Load balancers use various methods to decide where to send traffic.
 
 * **Round Robin**: Sends ***requests to servers sequentially***, in order (Server 1, then Server 2, then Server 3, then back to Server 1, etc.). Simple and fair.
@@ -258,7 +258,7 @@ Load balancers use various methods to decide where to send traffic.
 * **IP Hash**: Uses a hash function based on the client's IP address. This ensures a ***specific client is always directed to the same server***, which is useful for "***sticky***" sessions (where state is stored on the server).
     
 
-**Load Balancer Types**
+### **Load Balancer Types**
 
 *    * **L4 (Layer 4) Load Balancer**: Works at the Transport Layer (TCP/UDP). It makes decisions based primarily on IP addresses and ports. 
 
@@ -272,7 +272,7 @@ Decoupling (or loose coupling) is a fundamental concept in system design that me
 
 Think of it as having specialized teams at a company: the Marketing team knows they need a product from the Engineering team, but they don't need to know how Engineering builds it, what tools they use, or when they take coffee breaks. They just interact through a well-defined interface (like a Product Spec).
 
-**The Core Idea: Independence**
+### **The Core Idea: Independence**
 When a system is decoupled, it means:
 
 * **Change Isolation**: If you change something in Component A, Component B doesn't automatically break. The change is isolated to one area.
@@ -282,7 +282,7 @@ When a system is decoupled, it means:
 * **Flexibility**: You can replace an old component with a new one entirely (e.g., swapping out one database for another) with minimal impact on the rest of the system.
 
 
-**To achieve Decoupling**
+### **To achieve Decoupling**
 
 1. **Via APIs/Interfaces (Synchronous)**
 Instead of calling Component B's internal function directly, Component A calls a formal API Endpoint (like using a common plug/socket). The API is the contract. As long as the contract doesn't change, the internal code can change freely.
