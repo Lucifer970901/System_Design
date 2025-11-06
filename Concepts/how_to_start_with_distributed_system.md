@@ -6,7 +6,7 @@ Vertical scaling, also known as "scaling up" (or "scaling down"), is a method of
 
 Think of it as making one machine more powerful.
 
-**Key Characteristics**:
+### **Key Characteristics**:
 
 * **Action**: You increase the power of the current machine.
 * **Resources Added**: Typically involves upgrading components like:
